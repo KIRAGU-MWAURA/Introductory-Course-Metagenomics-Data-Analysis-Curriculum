@@ -1,19 +1,18 @@
-# Metagenomics_Analysis_Curriculum
+# Metagenomics Data analysis using Qiime 2
 
-# Qiime2_Tutorial
-This A brief curriculum on using Qiime2 for microbiome data analysis.
+This A brief curriculum on using Qiime 2 for microbiome data analysis.
 
 # Table of Content
-1. [INTRODUCTION](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#introduction)
-2. [INSTALLING QIIME 2](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#installing-qiime2)
-3. [QIIME 2 BASIC COMMANDS](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#qiime-2-command-line-interface)
-4. [UNDERSTANDING HOW QIIME 2 WORKS](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#understanding-qiime)
-5. [ABOUT OUR TEST DATA ](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#about-the-test-data)
-6. [DEMULTIPLEXING](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#demultiplexing)
-7. [QUALITY CONTROL AND FEATURE TABLE CONSTRUCTION](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#sequence-quality-control-and-feature-table-construction)
-8. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#generating-a-tree-for-phylogenetic-diversity-analyses)
-9. [ALPHA AND BETA DIVERSITY ANALYSIS](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/README.md#alpha-and-beta-diversity-analysis)
-10. [TAXONOMIC ANALYSIS](url)
+1. [INTRODUCTION]()
+2. [INSTALLING QIIME 2]()
+3. [QIIME 2 BASIC COMMANDS]()
+4. [UNDERSTANDING HOW QIIME 2 WORKS]()
+5. [ABOUT OUR TEST DATA ]()
+6. [DEMULTIPLEXING]()
+7. [QUALITY CONTROL AND FEATURE TABLE CONSTRUCTION]()
+8. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS]()
+9. [ALPHA AND BETA DIVERSITY ANALYSIS]()
+10. [TAXONOMIC ANALYSIS]()
 
 ## INTRODUCTION
 Qiime 2 is a platform for processing, analyzing, and visualizing microbiome data. 
