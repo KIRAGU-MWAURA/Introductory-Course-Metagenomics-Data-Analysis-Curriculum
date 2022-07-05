@@ -289,7 +289,6 @@ A visualizer accepts some combination of Qiime 2 artifacts as input but the outp
 ![qiime workflow](https://docs.qiime2.org/2022.2/_images/key.png)
 
 
-## Now let us see how a real workflow works! :smiley:
 
 
 *NB - All data must imported as Qiime 2 artifacts to be used by a Qiime 2 action*
@@ -304,7 +303,7 @@ These data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2
 - At five timepoints, the first of which immediately followed antibiotic usage. (day 0 , day 84, day 112, day 140, day 168)
 - These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
 
-*NB Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria.* [2]()
+*NB Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria.* [(2)]()
 
 [Explore the sample metadata here ](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
 
