@@ -563,7 +563,24 @@ This refers to diverstity between different samples
 
 
 ```
-qiime diversity core-metrics-phylogenetic --i-phylogeny rooted-tree.qza --i-table table.qza --p-sampling-depth 1103 --m-metadata-file sample-metadata.tsv -output-dir core-metrics-results
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table table.qza \
+  --p-sampling-depth 1103 \
+  --m-metadata-file sample-metadata.tsv \
+  --output-dir core-metrics-results
+```
+Output:
+This will be saved in the `core-metrics-results` directory.
+The contents of this directory should be as follows:
+```
+bray_curtis_distance_matrix.qza  jaccard_distance_matrix.qza   shannon_vector.qza                      weighted_unifrac_emperor.qzv
+bray_curtis_emperor.qzv          jaccard_emperor.qzv           unweighted_unifrac_distance_matrix.qza  weighted_unifrac_pcoa_results.qza
+bray_curtis_pcoa_results.qza     jaccard_pcoa_results.qza      unweighted_unifrac_emperor.qzv
+evenness_vector.qza              observed_features_vector.qza  unweighted_unifrac_pcoa_results.qza
+faith_pd_vector.qza              rarefied_table.qza            weighted_unifrac_distance_matrix.qza
+
+
 ```
 
 
