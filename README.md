@@ -583,6 +583,23 @@ faith_pd_vector.qza              rarefied_table.qza            weighted_unifrac_
 
 ```
 
+After computing the core metrics we can explore the microbial composition in context of the metadata
+we will start with alpha diversity.
+In alpha diversity several metrics are computed:
+1. Observed features - computes the richness ,that is how many different 'things' or features are observed
+2. Faith's phylogenetic ricness - tells us about the shared phylogenetic history
+3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
+4. Shannon diversity - this is a measure of both evenness and richness
+
+
+
+
+```
+qiime diversity alpha-group-significance   --i-alpha-diversity core-metrics-results/faith_pd_vector.qza   --m-metadata-file sample-metadata.tsv   --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+
+
+
+```
 
 
 
