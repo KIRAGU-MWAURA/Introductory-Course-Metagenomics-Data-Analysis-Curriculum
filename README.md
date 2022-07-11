@@ -1,4 +1,4 @@
-# Metagenomics Data analysis using Qiime 2
+# METAGENOMICS ANALYSIS USING QIIME 2
 
 This an easy curriculum on using Qiime 2 for microbiome data analysis.
 
@@ -307,7 +307,7 @@ The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/202
 
 ## GETTING STARTED!
 <details>
-<summar>The data analysis begins here</summary>
+<summary>The data analysis begins here</summary>
 - First create a directory and move inside that directory, this is where we will do our analysis.
 
 ```
