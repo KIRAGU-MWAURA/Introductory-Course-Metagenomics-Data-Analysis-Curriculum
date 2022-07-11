@@ -769,7 +769,7 @@ qiime metadata tabulate \
 
 
 
-## References
+## REFERENCES
 
 1. [Estaki, M., Jiang, L., Bokulich, N. A., McDonald, D., González, A.,Kosciolek, T., Martino, C., Zhu, Q., Birmingham, A.,Vázquez-Baeza, Y., Dillon, M. R., Bolyen, E., Caporaso, J. G., &Knight, R. (2020). QIIME 2 enables comprehensive end-to-endanalysis of diverse microbiome data and comparative studies with
 publicly available data. Current Protocols in Bioinformatics, 70,e100. doi: 10.1002/cpbi.100](https://currentprotocols.onlinelibrary.wiley.com/doi/full/10.1002/cpbi.100)
