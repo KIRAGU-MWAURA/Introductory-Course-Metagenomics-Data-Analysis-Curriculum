@@ -39,8 +39,8 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 ## INSTALLING QIIME 2 
 
 <details>
-<summary>Installing Qiime with conda environment</summary>
-This is the recommended way to install qiime2
+ <summary>Installing Qiime with conda environment</summary>  /n
+/n This is the recommended way to install qiime2
 
 
 1. First you have to install Miniconda by running the following command:
