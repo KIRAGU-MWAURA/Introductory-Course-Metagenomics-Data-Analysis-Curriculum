@@ -1,31 +1,45 @@
 # Metagenomics Data analysis using Qiime 2
 
-This A brief curriculum on using Qiime 2 for microbiome data analysis.
+This an easy curriculum on using Qiime 2 for microbiome data analysis.
 
-# Table of Content
-1. [INTRODUCTION]()
-2. [INSTALLING QIIME 2]()
-3. [QIIME 2 BASIC COMMANDS]()
-4. [UNDERSTANDING HOW QIIME 2 WORKS]()
+# TABLE OF CONTENT
+1. [INTRODUCTION](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#introduction)
+2. [INSTALLING QIIME 2](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#installing-qiime2)
+3. [QIIME 2 BASIC COMMANDS](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#qiime-2-command-line-interface)
+4. [UNDERSTANDING HOW QIIME 2](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#understanding-qiime)
 5. [ABOUT OUR TEST DATA ]()
 6. [DEMULTIPLEXING]()
-7. [QUALITY CONTROL AND FEATURE TABLE CONSTRUCTION]()
-8. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS]()
-9. [ALPHA AND BETA DIVERSITY ANALYSIS]()
-10. [TAXONOMIC ANALYSIS]()
+7. [QUALITY CONTROL]()
+8. [FEATURE TABLE CONSTRUCTION]()
+9. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS]()
+10. [ALPHA AND BETA DIVERSITY ANALYSIS]()
+11. [TAXONOMIC ANALYSIS]()
 
 ## INTRODUCTION
-Qiime 2 is a platform for processing, analyzing, and visualizing microbiome data. 
-
-
-In this tutorial We will do an analysis of human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
-
-QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [1]() 
+<details>
+<summary> Tutorial introduction </summary>
 
 
 
-## INSTALLING QIIME2 
-### Installing Qiime with conda environment.
+
+- Qiime 2 is a platform for processing, analyzing, and visualizing microbiome data. 
+
+
+- In this tutorial We will do an analysis of human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
+
+- QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [[1]]() 
+
+
+</details>
+
+
+
+
+
+## INSTALLING QIIME 2 
+
+<details>
+<summary>Installing Qiime with conda environment</summary>
 This is the recommended way to install qiime2
 
 
@@ -135,65 +149,33 @@ Output:
 ```
 qiime --help
 Usage: qiime [OPTIONS] COMMAND [ARGS]...
-
-  QIIME 2 command-line interface (q2cli)
-  --------------------------------------
-
-  To get help with QIIME 2, visit https://qiime2.org.
-
-  To enable tab completion in Bash, run the following command or add it to
-  your .bashrc/.bash_profile:
-
-      source tab-qiime
-
-  To enable tab completion in ZSH, run the following commands or add them to
-  your .zshrc:
-
-      autoload -Uz compinit && compinit
-      autoload bashcompinit && bashcompinit
-      source tab-qiime
-
-Options:
-  --version   Show the version and exit.
-  --help      Show this message and exit.
-
-Commands:
-  info                Display information about current deployment.
-  tools               Tools for working with QIIME 2 files.
-  dev                 Utilities for developers and advanced users.
-  alignment           Plugin for generating and manipulating alignments.
-  composition         Plugin for compositional data analysis.
-  cutadapt            Plugin for removing adapter sequences, primers, and
-                      other unwanted sequence from sequence data.
-
-  dada2               Plugin for sequence quality control with DADA2.
-  deblur              Plugin for sequence quality control with Deblur.
-  demux               Plugin for demultiplexing & viewing sequence quality.
-  diversity           Plugin for exploring community diversity.
-  diversity-lib       Plugin for computing community diversity.
-  emperor             Plugin for ordination plotting with Emperor.
-  feature-classifier  Plugin for taxonomic classification.
-  feature-table       Plugin for working with sample by feature tables.
-  fragment-insertion  Plugin for extending phylogenies.
-  gneiss              Plugin for building compositional models.
-  longitudinal        Plugin for paired sample and time series analyses.
-  metadata            Plugin for working with Metadata.
-  phylogeny           Plugin for generating and manipulating phylogenies.
-  quality-control     Plugin for quality control of feature and sequence data.
-  quality-filter      Plugin for PHRED-based filtering and trimming.
-  sample-classifier   Plugin for machine learning prediction of sample
-                      metadata.
-
-  taxa                Plugin for working with feature taxonomy annotations.
-  vsearch             Plugin for clustering and dereplicating with vsearch.
 ```
+To get help more with QIIME 2, visit [https://qiime2.org](https://qiime2.org)
+
+
 You have successfully installed QIIME 2!
 
-### QIIME 2 COMMAND LINE INTERFACE
+</details>
+
+
+
+
+  
+
+  
+
+  
+
+
+
+## QIIME 2 COMMAND LINE INTERFACE
+<details>
+<summary>Basic commands in Qiime 2</summary>
+
 - Inorder to use qiime it is important to familiarize with the basic commands in qiime.
 
-**BASIC COMMANDS IN QIIME**
 - To see a list of available commands run:
+
 ```
 qiime
 ```
@@ -265,9 +247,14 @@ source tab-qiime
 
 - To verify that tab completion is working try running `qiime i` and press tab it should auto complete to `qiime info`
 
-## UNDERSTANDING QIIME
-**IMPORTANT TERMS**
 
+</details>
+
+
+
+## UNDERSTANDING QIIME
+<details>
+<summary>Important Definitions</summary>
 **ARTIFACTS** - Instead of normal data files qiime uses artifacts as the data files. These contain the actual data and the metadata. The metadata describes things about the data, such as its type, format, and how it was generated. Artifacts have `.qza` file extension.
 
 **VISUALIZATIONS** - This are terminal outputs and cannot be used as inputs. for example statistical result tables and static images. Visualizations have `.qzv` file extension
@@ -291,12 +278,19 @@ A visualizer accepts some combination of Qiime 2 artifacts as input but the outp
 
 
 
-*NB - All data must imported as Qiime 2 artifacts to be used by a Qiime 2 action*
+</details>
 
-*- Users may use A Qiime 2 workflow in different stages eg.most may have raw data eg. FASTQ or FASTA which should be imported appropriately as we shall see later. Some may start with dimultiplexing data or a feature table*
+
+
+
+
+
 
 ##  ABOUT THE TEST DATA 
-These data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2022.2/tutorials/moving-pictures/#moving-pics-diversity)
+<details>
+<summary>Understanding the test data</summary>
+
+The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2022.2/tutorials/moving-pictures/#moving-pics-diversity)
 
 - An analysis of human microbiome samples from two indivuduals (subject-1 and subject-2) 
 - At four body sites (gut,tongue left palm, right palm)
@@ -308,8 +302,12 @@ These data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2
 [Explore the sample metadata here ](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
 
 
-## let's get started!
+</details>
 
+
+## GETTING STARTED!
+<details>
+<summar>The data analysis begins here</summary>
 - First create a directory and move inside that directory, this is where we will do our analysis.
 
 ```
@@ -343,7 +341,8 @@ wget \
   wget https://data.qiime2.org/2022.2/tutorials/moving-pictures/emp-single-end-sequences/barcodes.fastq.gz
   
 ```
-Output
+Output:
+
 ```
 --2022-06-26 16:35:05--  https://data.qiime2.org/2022.2/tutorials/moving-pictures/emp-single-end-sequences/barcodes.fastq.gz
 Resolving data.qiime2.org (data.qiime2.org)... 54.200.1.12
@@ -396,11 +395,17 @@ sequences.fastq.gz                  100%[=======================================
  barcodes.fastq.gz sequences.fastq.gz
 ```
   
-  Importing the data as qiime2 artifacts make sure you are in the tutorial directory ( Remember artifacts= data+metadata. This is what importing does; simply combining the data and metadata into a .qza file)
-  ```
+### Importing data as qiime 2 artifacts
+- All data must imported as Qiime 2 artifacts to be used by a Qiime 2 action
+
+- Users may use A Qiime 2 workflow in different stages eg.most may have raw data eg. FASTQ or FASTA which should be imported appropriately. Some may start with dimultiplexing data or a feature table
+
+- Importing the data as qiime2 artifacts make sure you are in the tutorial directory ( Remember artifacts= data+metadata. This is what importing does; simply combining the data and metadata into a .qza file)
+
+ ```
   qiime tools import   --type EMPSingleEndSequences   --input-path emp-single-end-sequences   --output-path emp-single-end-sequences.qza
 ```
-Output
+Output:
 ```
 Imported emp-single-end-sequences as EMPSingleEndDirFmt to emp-single-end-sequences.qza
 ```
@@ -417,7 +422,14 @@ Type:        EMPSingleEndSequences
 Data format: EMPSingleEndDirFmt
 
 ```
+
+
+</details>
+
+
 ## DEMULTIPLEXING
+<details>
+<summary>Demultiplexing the samples</summary>
 During sequencing multiple samples are sequenced in a single lane (Multiplexing) Each sequence has a unique barcode corresponding to the sample it came from. In this step we want to know which barcode belong to each sample.
 
 To demultiplex the sequences in our case single reads we run the command:
@@ -458,10 +470,13 @@ Command:
 ![demux4](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/after_bar_graph2_demux_result.png)
   
   
-  ## SEQUENCE QUALITY CONTROL AND FEATURE TABLE CONSTRUCTION
-  
-  ### Sequence quality control using dada2
-  
+
+</details>
+
+
+  ## SEQUENCE QUALITY CONTROL 
+  <details>
+  <summary>Sequence quality control using dada2</summary>
   Inorder to remove low quality regions we will use the interactive plot in the `demux.qzv` file  to figure out which parameters to use
   
   ![interactive demux plot](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/interactive_demux_plot.png)
@@ -501,8 +516,13 @@ mv rep-seqs-dada2.qza rep-seqs.qza
 ```
 mv table-dada2.qza table.qza
 ```
-### Feature table and feature data summaries
-The `feature-table summarize` command output is a visualization file `table.qzv` which contains information on how many sequences are associated with each sample and with each feature also histograms for those distributions and related summary statistics
+</details>
+
+## FEATURE TABLE CONSTRUCTION
+<details>
+<summary>Feature table and feature data summaries</summary>
+
+- The `feature-table summarize` command output is a visualization file `table.qzv` which contains information on how many sequences are associated with each sample and with each feature also histograms for those distributions and related summary statistics
 
 The `feature-table tabulate seqs` command out is a visualization file `rep-seqs.qzv` which contains a mapping of feature IDs to sequences, and provide links to easily BLAST each sequence against the NCBI nt database.
 
@@ -533,9 +553,21 @@ qiime tools view table.qzv
 qiime tools view rep-seqs.qzv
 ```
 
+  
+</details>
+  
+ 
+  
+  
 
-## Generating a tree for phylogenetic diversity analyses
-The diversity metrics in the next steps require a phylogenetic tree relating the features to one another.
+## GENERATING A PHYLOGENETIC TREE FOR DIVERSITY ANALYSIS
+<details>
+<summary>Generating a phylogenetic tree </summary>
+
+- The diversity metrics in the next steps require a phylogenetic tree relating the features to one another
+
+- To generate the tree run the following command: 
+
 ```
 qiime phylogeny align-to-tree-mafft-fasttree  --i-sequences rep-seqs.qza --o-alignment aligned-rep-seqs.qza --o-masked-alignment masked-aligned-rep-seqs.qza --o-tree unrooted-tree.qza --o-rooted-tree rooted-tree.qza
 ```
@@ -546,8 +578,12 @@ Saved FeatureData[AlignedSequence] to: masked-aligned-rep-seqs.qza
 Saved Phylogeny[Unrooted] to: unrooted-tree.qza
 Saved Phylogeny[Rooted] to: rooted-tree.qza
 ```
+</details>
+
 
 ## ALPHA AND BETA DIVERSITY ANALYSIS
+<details>
+<summary>Computing the core metrics </summary>
 
 **ALPHA DIVERSITY**
 This refers to the diversity within a single sample
@@ -587,7 +623,7 @@ After computing the core metrics we can explore the microbial composition in con
 we will start with alpha diversity.
 In alpha diversity several metrics are computed:
 1. Observed features - computes the richness ,that is how many different 'things' or features are observed
-2. Faith's phylogenetic ricness - tells us about the shared phylogenetic history
+2. Faith's phylogenetic richness - tells us about the shared phylogenetic history
 3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
 4. Shannon diversity - this is a measure of both evenness and richness
 
@@ -599,7 +635,9 @@ qiime diversity alpha-group-significance   --i-alpha-diversity core-metrics-resu
 
 
 
+
 ```
+</details>
 
 
 
