@@ -750,12 +750,14 @@ qiime emperor plot \
  ```
  - To convert to a visualization run:
  ```
-
 qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
  ```
+ 
  </details>
+
+
 
 
 ## References
