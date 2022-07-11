@@ -1,4 +1,4 @@
-# Metagenomics Data analysis using Qiime 2
+# METAGENOMICS ANALYSIS USING QIIME 2
 
 This an easy curriculum on using Qiime 2 for microbiome data analysis.
 
@@ -9,7 +9,7 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 4. [UNDERSTANDING HOW QIIME 2](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#understanding-qiime)
 5. [ABOUT OUR TEST DATA ]()
 6. [DEMULTIPLEXING]()
-7. [QUALITY CONTROL]()
+7. [SEQUENCE QUALITY CONTROL]()
 8. [FEATURE TABLE CONSTRUCTION]()
 9. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS]()
 10. [ALPHA AND BETA DIVERSITY ANALYSIS]()
@@ -25,7 +25,7 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 - Qiime 2 is a platform for processing, analyzing, and visualizing microbiome data. 
 
 
-- In this tutorial We will do an analysis of human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
+- In this tutorial we will analyze human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
 
 - QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [[1]]() 
 
@@ -39,10 +39,13 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 ## INSTALLING QIIME 2 
 
 <details>
-<summary>Installing Qiime with conda environment</summary>
-This is the recommended way to install qiime2
-
-
+ <summary>Installing Qiime with conda environment</summary>
+ 
+ 
+ 
+ 
+- This is the recommended way to install qiime2
+ 
 1. First you have to install Miniconda by running the following command:
 
  ```
@@ -59,7 +62,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 - close and open your terminal for the changes to take place.
 
 
-- Run `conda list` to see the conda packages installed.
+2.  Run `conda list` to see the conda packages installed.
 
 ```
 conda list
@@ -106,7 +109,7 @@ yaml                      0.2.5                h7b6447c_0
 zlib                      1.2.12               h7f8727e_2  
 
 ```
-- Update conda
+3.  Update conda
 
 ```
 conda update conda
@@ -122,7 +125,7 @@ Solving environment: done
 ```
 [More information on installing conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html)
 
-3. Download the .yml file for Qiime 2 by running the following command:
+4. Download the .yml file for Qiime 2 by running the following command:
 ```
 wget https://data.qiime2.org/distro/core/qiime2-2022.2-py38-linux-conda.yml
 ```
@@ -150,7 +153,10 @@ Output:
 qiime --help
 Usage: qiime [OPTIONS] COMMAND [ARGS]...
 ```
-To get help more with QIIME 2, visit [https://qiime2.org](https://qiime2.org)
+To get more help with QIIME 2, visit [https://qiime2.org](https://qiime2.org)
+ 
+ 
+ 
 
 
 You have successfully installed QIIME 2!
@@ -255,25 +261,29 @@ source tab-qiime
 ## UNDERSTANDING QIIME
 <details>
 <summary>Important Definitions</summary>
-**ARTIFACTS** - Instead of normal data files qiime uses artifacts as the data files. These contain the actual data and the metadata. The metadata describes things about the data, such as its type, format, and how it was generated. Artifacts have `.qza` file extension.
+ 
+- **ARTIFACTS** - Instead of normal data files qiime uses artifacts as the data files. These contain the actual data and the metadata. The metadata describes things about the data, such as its type, format, and how it was generated. Artifacts have `.qza` file extension.
+ 
 
-**VISUALIZATIONS** - This are terminal outputs and cannot be used as inputs. for example statistical result tables and static images. Visualizations have `.qzv` file extension
+- **VISUALIZATIONS** - This are terminal outputs and cannot be used as inputs. for example statistical result tables and static images. Visualizations have `.qzv` file extension
 
 
-**SEMANTIC TYPES** -These enable Qiime 2 to identify artifacts that are suitable inputs to an analysis for example, if an analysis requires distance matrix as input Qiime 2 will detect the semantic type of the artifacts with distance matrix to avoid incompatible artifacts from being used in the analysis.
+- **SEMANTIC TYPES** -These enable Qiime 2 to identify artifacts that are suitable inputs to an analysis for example, if an analysis requires distance matrix as input Qiime 2 will detect the semantic type of the artifacts with distance matrix to avoid incompatible artifacts from being used in the analysis.
 
-**PLUGINS** -These are like 'flags' for softwares that can be used with Qiime. eg `q2 -demux ` for dimultiplexing
+- **PLUGINS** -These are like 'flags' for softwares that can be used with Qiime. eg `q2 -demux ` for dimultiplexing
 
-**METHODS AND VISUALIZERS** - Qiime 2 plugins define methods and visualizers that are used for analyses 
-A method accepts some combination of Qiime 2 artifacts and parameters as input and produces one or more artifacts as output.
-A visualizer accepts some combination of Qiime 2 artifacts as input but the output of a visualizer cannot be used as an input.
+- **METHODS AND VISUALIZERS** - Qiime 2 plugins define methods and visualizers that are used for analyses 
+  - A method accepts some combination of Qiime 2 artifacts and parameters as input and produces one or more artifacts as output.
+  - A visualizer accepts some combination of Qiime 2 artifacts as input but the output of a visualizer cannot be used as an input.
 
-*NB Artifacts and visualizations are data files, pipelines methods and visualizers are actions*
 
 [Additional information about key terms used in Qiime 2](https://docs.qiime2.org/2022.2/glossary/)
 
 **A visual overview of how Qiime 2 works**
 ![qiime workflow](https://docs.qiime2.org/2022.2/_images/key.png)
+ 
+ - Artifacts and visualizations are data files, pipelines, methods and visualizers are actions
+
 
 
 
@@ -292,14 +302,15 @@ A visualizer accepts some combination of Qiime 2 artifacts as input but the outp
 
 The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2022.2/tutorials/moving-pictures/#moving-pics-diversity)
 
-- An analysis of human microbiome samples from two indivuduals (subject-1 and subject-2) 
+- This is an analysis of human microbiome samples from two indivuduals (subject-1 and subject-2) 
 - At four body sites (gut,tongue left palm, right palm)
 - At five timepoints, the first of which immediately followed antibiotic usage. (day 0 , day 84, day 112, day 140, day 168)
 - These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
+ 
 
-*NB Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria.* [(2)]()
+- Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria. [[2]]()
 
-[Explore the sample metadata here ](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
+Explore the sample metadata[here](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
 
 
 </details>
@@ -307,7 +318,7 @@ The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/202
 
 ## GETTING STARTED!
 <details>
-<summar>The data analysis begins here</summary>
+<summary>The data analysis begins here</summary>
 - First create a directory and move inside that directory, this is where we will do our analysis.
 
 ```
@@ -430,9 +441,13 @@ Data format: EMPSingleEndDirFmt
 ## DEMULTIPLEXING
 <details>
 <summary>Demultiplexing the samples</summary>
-During sequencing multiple samples are sequenced in a single lane (Multiplexing) Each sequence has a unique barcode corresponding to the sample it came from. In this step we want to know which barcode belong to each sample.
+ 
+- During sequencing, multiple samples are sequenced in a single lane (Multiplexing) Each sequence has a unique barcode corresponding to the sample it came from. In this step we want to know which barcode belong to each sample.
+ 
+ 
 
-To demultiplex the sequences in our case single reads we run the command:
+- To demultiplex the sequences in our case single reads we run the command:
+ 
 ```
 qiime demux emp-single --i-seqs emp-single-end-sequences.qza --m-barcodes-file sample-metadata.tsv --m-barcodes-column barcode-sequence --o-per-sample-sequences demux.qza --o-error-correction-details demux-details.qza
 
@@ -460,15 +475,7 @@ Command:
 ```
 
 - This should open a html file in your browser which you can view the demultiplexing results.
-- 
- ![demux1](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/demux1.png)
- 
- ![demux2](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/bar_graph_demux.png)
- 
-![demux3](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/afterbar_graph1demux.png)
 
-![demux4](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/after_bar_graph2_demux_result.png)
-  
   
 
 </details>
@@ -477,18 +484,19 @@ Command:
   ## SEQUENCE QUALITY CONTROL 
   <details>
   <summary>Sequence quality control using dada2</summary>
-  Inorder to remove low quality regions we will use the interactive plot in the `demux.qzv` file  to figure out which parameters to use
-  
-  ![interactive demux plot](https://github.com/Wangari-Joyce/Qiime2_Tutorial/blob/main/interactive_demux_plot.png)
+ 
+ 
+  - Inorder to remove low quality regions we will use the interactive quality plot in the  `demux.qzv`  file  to figure out which parameters to use
+ 
   
   - From the plot we can see that the begining of the sequence has high quality scores which begins to drop around 120 bases
   - On the left side we are not going to trim any bases. We truncate from 120bases upwards
   - We are going to use the dada 2 denoise plugin for single end reads
   * The dada2 plugin does the following:
-   * 1. Filters and trims the reads
-   * 2. Finds the most likely original reads in the sequence
-   * 3. Removes chimeras
-   * 4. Counts the abundance
+     1. Filters and trims the reads
+     2. Finds the most likely original reads in the sequence
+     3. Removes chimeras
+     4. Counts the abundance
   ```
   qiime dada2 denoise-single --i-demultiplexed-seqs demux.qza --p-trim-left 0 --p-trunc-len 120 --o-representative-sequences rep-seqs-dada2.qza --o-table table-dada2.qza --o-denoising-stats stats-dada2.qza
   ```
@@ -509,7 +517,7 @@ Saved SampleData[DADA2Stats] to: stats-dada2.qza
  ```
  - This will open a html file in your browser.
 
-Rename the files for easier identification.
+- Rename the files for easier identification.
 ```
 mv rep-seqs-dada2.qza rep-seqs.qza
 ```
@@ -521,10 +529,12 @@ mv table-dada2.qza table.qza
 ## FEATURE TABLE CONSTRUCTION
 <details>
 <summary>Feature table and feature data summaries</summary>
+ 
+ 
 
-- The `feature-table summarize` command output is a visualization file `table.qzv` which contains information on how many sequences are associated with each sample and with each feature also histograms for those distributions and related summary statistics
+- The `feature-table summarize` command outputs a visualization file `table.qzv` which contains information on how many sequences are associated with each sample and with each feature also histograms for those distributions and related summary statistics
 
-The `feature-table tabulate seqs` command out is a visualization file `rep-seqs.qzv` which contains a mapping of feature IDs to sequences, and provide links to easily BLAST each sequence against the NCBI nt database.
+- The `feature-table tabulate seqs` command outputs a visualization file `rep-seqs.qzv` which contains a mapping of feature IDs to sequences, and provide links to easily BLAST each sequence against the NCBI nt database.
 
 ```
 qiime feature-table summarize --i-table table.qza --o-visualization table.qzv --m-sample-metadata-file sample-metadata.tsv 
@@ -582,16 +592,22 @@ Saved Phylogeny[Rooted] to: rooted-tree.qza
 
 
 ## ALPHA AND BETA DIVERSITY ANALYSIS
+
 <details>
+ 
 <summary>Computing the core metrics </summary>
+ 
 
-**ALPHA DIVERSITY**
-This refers to the diversity within a single sample
+ALPHA DIVERSITY
+- This refers to the diversity within a single sample
 
-**BETA DIVERSITY**
-This refers to diverstity between different samples
+BETA DIVERSITY
+- This refers to diverstity between different samples
+ 
 
 
+**Computing the core metrics**
+ 
 - Here we use the `core-metrics-phylogenetic` command which computes several alpha and beta diversity metrics, and generates principle coordinates analysis (PCoA) plots using Emperor for each of the beta diversity metrics.
 - An important parameter that should be provided is the `--p-sampling-depth` because most of the diversity metrics are sensitve to the sampling depth. if for example you choose a sampling depth of 500 any sample below 500 will be dropped from the analysis.
 - The value for the sampling depth can be chosen by looking at the `table.qzv` html file in the interactive sample detail tab. 
@@ -607,8 +623,10 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir core-metrics-results
 ```
 Output:
-This will be saved in the `core-metrics-results` directory.
-The contents of this directory should be as follows:
+ 
+- This will be saved in the `core-metrics-results` directory.
+- The contents of this directory should be as follows:
+ 
 ```
 bray_curtis_distance_matrix.qza  jaccard_distance_matrix.qza   shannon_vector.qza                      weighted_unifrac_emperor.qzv
 bray_curtis_emperor.qzv          jaccard_emperor.qzv           unweighted_unifrac_distance_matrix.qza  weighted_unifrac_pcoa_results.qza
@@ -619,25 +637,127 @@ faith_pd_vector.qza              rarefied_table.qza            weighted_unifrac_
 
 ```
 
-After computing the core metrics we can explore the microbial composition in context of the metadata
-we will start with alpha diversity.
+- After computing the core metrics we can explore the microbial composition in context of the metadata
+- We will start with alpha diversity.
 In alpha diversity several metrics are computed:
-1. Observed features - computes the richness ,that is how many different 'things' or features are observed
-2. Faith's phylogenetic richness - tells us about the shared phylogenetic history
-3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
-4. Shannon diversity - this is a measure of both evenness and richness
+ 1. Observed features - computes the richness ,that is how many different 'things' or features are observed
+ 2. Faith's phylogenetic richness - tells us about the shared phylogenetic history
+ 3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
+ 4. Shannon diversity - this is a measure of both evenness and richness
 
 
+- To test  association between categorical metadata and alpha diversity we will use the following commands to test Faith Phylogenetic Diversity (a measure of community richness) and evenness metrics in relation to the  sample metadata
 
 
+- Faith Phylogenetic Diversity in relation to the  sample metadata
 ```
 qiime diversity alpha-group-significance   --i-alpha-diversity core-metrics-results/faith_pd_vector.qza   --m-metadata-file sample-metadata.tsv   --o-visualization core-metrics-results/faith-pd-group-significance.qzv
-
-
-
-
+ 
 ```
+ 
+ - To view:
+ ```
+ qiime tools view faith-pd-group-significance.qzv
+ 
+ ```
+- Evenness metrics in relation to the  sample metadata
+ 
+ ```
+ qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+ ```
+ 
+ To view:
+ ```
+ qiime tools view evenness-group-significance.qzv
+ ```
+ 
+ - To test  association between categorical metadata and Beta diversity using PERMANOVA we will use the `beta-group-significance` command. The following commands will test whether distances between samples within a group, such as samples from the same body site (e.g., gut), are more similar to each other then they are to samples from the other groups (e.g., tongue, left palm, and right palm). 
+ - If  this command ` --p-pairwise parameter` is used,  it will perform pairwise tests that will allow you to determine which specific pairs of groups (e.g., tongue and gut) differ from one another, if any. 
+ - This command can be slow to run, especially when passing `--p-pairwise`, since it is based on permutation tests. So, unlike the previous commands, we’ll run beta-group-significance on specific columns of metadata, rather than all metadata columns. 
+ - Here we will apply this to our unweighted UniFrac distances, using two sample metadata columns body site and subject respectively.
+ 
+ ```
+ qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --m-metadata-column body-site \
+  --o-visualization core-metrics-results/unweighted-unifrac-body-site-significance.qzv \
+  --p-pairwise
+```
+ ```
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --m-metadata-column subject \
+  --o-visualization core-metrics-results/unweighted-unifrac-subject-group-significance.qzv \
+  --p-pairwise
+ ```
+ To view:
+ ```
+ qiime tools view unweighted-unifrac-body-site-significance.qzv
+ ```
+ ```
+  qiime tools view unweighted-unifrac-subject-group-significance.qzv
+```
+ 
+ - Ordination is a popular approach for exploring microbial community composition in the context of sample metadata. We can use the Emperor tool to explore principal coordinates (PCoA) plots in the context of sample metadata
+ 
+ - We will generate Emperor plots for unweighted UniFrac and Bray-Curtis
+ 
+ ```
+ qiime emperor plot \
+  --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-custom-axes days-since-experiment-start \
+  --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
+```
+ ```
+qiime emperor plot \
+  --i-pcoa core-metrics-results/bray_curtis_pcoa_results.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-custom-axes days-since-experiment-start \
+  --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
+ ```
+ 
+ 
+ 
+ 
 </details>
+
+ ## TAXONOMIC ANALYSIS
+ <details>
+ <summary>Exploring taxonomic composition of the samples </summary>
+ 
+- Here we will now explore the taxonomic composition of the samples, and again relate that to sample metadata. The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact.
+ - We will do that using a pre-trained Naive Bayes classifier and the `q2-feature-classifier plugin`.
+ - This classifier was trained on the Greengenes 13_8 99% OTUs, where the sequences have been trimmed to only include 250 bases from the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair). 
+ - We will apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
+ 
+ - First we download the classifier:
+ ```
+ wget \
+  -O "gg-13-8-99-515-806-nb-classifier.qza" \
+  "https://data.qiime2.org/2022.2/common/gg-13-8-99-515-806-nb-classifier.qza"
+ 
+ ```
+ ```
+ qiime feature-classifier classify-sklearn \
+  --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+ ```
+ - To convert to a visualization run:
+ ```
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+ ```
+ 
+ </details>
+
 
 
 
