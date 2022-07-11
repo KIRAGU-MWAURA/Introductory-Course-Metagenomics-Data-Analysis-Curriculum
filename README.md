@@ -755,6 +755,14 @@ qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
  ```
+ -We can view the taxonomic composition of our samples with interactive bar plots with the following command and then open the visualization
+ ```
+ qiime taxa barplot \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization taxa-bar-plots.qzv
+  ```
  
  </details>
 
