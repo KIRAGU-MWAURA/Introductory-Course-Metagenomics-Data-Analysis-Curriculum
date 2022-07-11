@@ -9,7 +9,7 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 4. [UNDERSTANDING HOW QIIME 2](https://github.com/KIRAGU-MWAURA/Metagenomics-Data-Analysis-Curriculum/tree/Joyce_dev#understanding-qiime)
 5. [ABOUT OUR TEST DATA ]()
 6. [DEMULTIPLEXING]()
-7. [QUALITY CONTROL]()
+7. [SEQUENCE QUALITY CONTROL]()
 8. [FEATURE TABLE CONSTRUCTION]()
 9. [GENERATING A TREE FOR PHYLOGENETIC DIVERSITY ANALYSIS]()
 10. [ALPHA AND BETA DIVERSITY ANALYSIS]()
@@ -25,7 +25,7 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 - Qiime 2 is a platform for processing, analyzing, and visualizing microbiome data. 
 
 
-- In this tutorial We will do an analysis of human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
+- In this tutorial we will analyze human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
 
 - QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [[1]]() 
 
@@ -255,25 +255,29 @@ source tab-qiime
 ## UNDERSTANDING QIIME
 <details>
 <summary>Important Definitions</summary>
-**ARTIFACTS** - Instead of normal data files qiime uses artifacts as the data files. These contain the actual data and the metadata. The metadata describes things about the data, such as its type, format, and how it was generated. Artifacts have `.qza` file extension.
+ 
+- **ARTIFACTS** - Instead of normal data files qiime uses artifacts as the data files. These contain the actual data and the metadata. The metadata describes things about the data, such as its type, format, and how it was generated. Artifacts have `.qza` file extension.
+ 
 
-**VISUALIZATIONS** - This are terminal outputs and cannot be used as inputs. for example statistical result tables and static images. Visualizations have `.qzv` file extension
+- **VISUALIZATIONS** - This are terminal outputs and cannot be used as inputs. for example statistical result tables and static images. Visualizations have `.qzv` file extension
 
 
-**SEMANTIC TYPES** -These enable Qiime 2 to identify artifacts that are suitable inputs to an analysis for example, if an analysis requires distance matrix as input Qiime 2 will detect the semantic type of the artifacts with distance matrix to avoid incompatible artifacts from being used in the analysis.
+- **SEMANTIC TYPES** -These enable Qiime 2 to identify artifacts that are suitable inputs to an analysis for example, if an analysis requires distance matrix as input Qiime 2 will detect the semantic type of the artifacts with distance matrix to avoid incompatible artifacts from being used in the analysis.
 
-**PLUGINS** -These are like 'flags' for softwares that can be used with Qiime. eg `q2 -demux ` for dimultiplexing
+- **PLUGINS** -These are like 'flags' for softwares that can be used with Qiime. eg `q2 -demux ` for dimultiplexing
 
-**METHODS AND VISUALIZERS** - Qiime 2 plugins define methods and visualizers that are used for analyses 
-A method accepts some combination of Qiime 2 artifacts and parameters as input and produces one or more artifacts as output.
-A visualizer accepts some combination of Qiime 2 artifacts as input but the output of a visualizer cannot be used as an input.
+- **METHODS AND VISUALIZERS** - Qiime 2 plugins define methods and visualizers that are used for analyses 
+  - A method accepts some combination of Qiime 2 artifacts and parameters as input and produces one or more artifacts as output.
+  - A visualizer accepts some combination of Qiime 2 artifacts as input but the output of a visualizer cannot be used as an input.
 
-*NB Artifacts and visualizations are data files, pipelines methods and visualizers are actions*
 
 [Additional information about key terms used in Qiime 2](https://docs.qiime2.org/2022.2/glossary/)
 
 **A visual overview of how Qiime 2 works**
 ![qiime workflow](https://docs.qiime2.org/2022.2/_images/key.png)
+ 
+ - Artifacts and visualizations are data files, pipelines, methods and visualizers are actions
+
 
 
 
@@ -292,7 +296,7 @@ A visualizer accepts some combination of Qiime 2 artifacts as input but the outp
 
 The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/2022.2/tutorials/moving-pictures/#moving-pics-diversity)
 
-- An analysis of human microbiome samples from two indivuduals (subject-1 and subject-2) 
+- This is an analysis of human microbiome samples from two indivuduals (subject-1 and subject-2) 
 - At four body sites (gut,tongue left palm, right palm)
 - At five timepoints, the first of which immediately followed antibiotic usage. (day 0 , day 84, day 112, day 140, day 168)
 - These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
