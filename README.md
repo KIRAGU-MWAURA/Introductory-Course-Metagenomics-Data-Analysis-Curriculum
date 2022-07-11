@@ -743,6 +743,7 @@ qiime emperor plot \
   "https://data.qiime2.org/2022.2/common/gg-13-8-99-515-806-nb-classifier.qza"
  
  ```
+ ```
  qiime feature-classifier classify-sklearn \
   --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
   --i-reads rep-seqs.qza \
