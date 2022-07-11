@@ -637,22 +637,125 @@ faith_pd_vector.qza              rarefied_table.qza            weighted_unifrac_
 
 ```
 
-After computing the core metrics we can explore the microbial composition in context of the metadata
-we will start with alpha diversity.
+- After computing the core metrics we can explore the microbial composition in context of the metadata
+- We will start with alpha diversity.
 In alpha diversity several metrics are computed:
-1. Observed features - computes the richness ,that is how many different 'things' or features are observed
-2. Faith's phylogenetic richness - tells us about the shared phylogenetic history
-3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
-4. Shannon diversity - this is a measure of both evenness and richness
+ 1. Observed features - computes the richness ,that is how many different 'things' or features are observed
+ 2. Faith's phylogenetic richness - tells us about the shared phylogenetic history
+ 3. Pielou's Evenness - tells us how many of each different 'thing' or feature is present
+ 4. Shannon diversity - this is a measure of both evenness and richness
 
 
+- To test  association between categorical metadata and alpha diversity we will use the following commands to test Faith Phylogenetic Diversity (a measure of community richness) and evenness metrics in relation to the  sample metadata
 
 
+- Faith Phylogenetic Diversity in relation to the  sample metadata
 ```
 qiime diversity alpha-group-significance   --i-alpha-diversity core-metrics-results/faith_pd_vector.qza   --m-metadata-file sample-metadata.tsv   --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+ 
 ```
+ 
+ - To view:
+ ```
+ qiime tools view faith-pd-group-significance.qzv
+ 
+ ```
+- Evenness metrics in relation to the  sample metadata
+ 
+ ```
+ qiime diversity alpha-group-significance \
+  --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization core-metrics-results/evenness-group-significance.qzv
+ ```
+ 
+ To view:
+ ```
+ qiime tools view evenness-group-significance.qzv
+ ```
+ 
+ - To test  association between categorical metadata and Beta diversity using PERMANOVA we will use the `beta-group-significance` command. The following commands will test whether distances between samples within a group, such as samples from the same body site (e.g., gut), are more similar to each other then they are to samples from the other groups (e.g., tongue, left palm, and right palm). 
+ - If  this command ` --p-pairwise parameter` is used,  it will perform pairwise tests that will allow you to determine which specific pairs of groups (e.g., tongue and gut) differ from one another, if any. 
+ - This command can be slow to run, especially when passing `--p-pairwise`, since it is based on permutation tests. So, unlike the previous commands, we’ll run beta-group-significance on specific columns of metadata, rather than all metadata columns. 
+ - Here we will apply this to our unweighted UniFrac distances, using two sample metadata columns body site and subject respectively.
+ 
+ ```
+ qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --m-metadata-column body-site \
+  --o-visualization core-metrics-results/unweighted-unifrac-body-site-significance.qzv \
+  --p-pairwise
+```
+ ```
+qiime diversity beta-group-significance \
+  --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --m-metadata-column subject \
+  --o-visualization core-metrics-results/unweighted-unifrac-subject-group-significance.qzv \
+  --p-pairwise
+ ```
+ To view:
+ ```
+ qiime tools view unweighted-unifrac-body-site-significance.qzv
+ ```
+ ```
+  qiime tools view unweighted-unifrac-subject-group-significance.qzv
+```
+ 
+ - Ordination is a popular approach for exploring microbial community composition in the context of sample metadata. We can use the Emperor tool to explore principal coordinates (PCoA) plots in the context of sample metadata
+ 
+ - We will generate Emperor plots for unweighted UniFrac and Bray-Curtis
+ 
+ ```
+ qiime emperor plot \
+  --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-custom-axes days-since-experiment-start \
+  --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
+```
+ ```
+qiime emperor plot \
+  --i-pcoa core-metrics-results/bray_curtis_pcoa_results.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-custom-axes days-since-experiment-start \
+  --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
+ ```
+ 
+ 
+ 
+ 
 </details>
 
+ ## TAXONOMIC ANALYSIS
+ <details>
+ <summary>Exploring taxonomic composition of the samples </summary>
+ 
+- Here we will now explore the taxonomic composition of the samples, and again relate that to sample metadata. The first step in this process is to assign taxonomy to the sequences in our `FeatureData[Sequence]` QIIME 2 artifact.
+ - We will do that using a pre-trained Naive Bayes classifier and the `q2-feature-classifier plugin`.
+ - This classifier was trained on the Greengenes 13_8 99% OTUs, where the sequences have been trimmed to only include 250 bases from the region of the 16S that was sequenced in this analysis (the V4 region, bound by the 515F/806R primer pair). 
+ - We will apply this classifier to our sequences, and we can generate a visualization of the resulting mapping from sequence to taxonomy.
+ 
+ - First we download the classifier:
+ ```
+ wget \
+  -O "gg-13-8-99-515-806-nb-classifier.qza" \
+  "https://data.qiime2.org/2022.2/common/gg-13-8-99-515-806-nb-classifier.qza"
+ 
+ ```
+ qiime feature-classifier classify-sklearn \
+  --i-classifier gg-13-8-99-515-806-nb-classifier.qza \
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+ ```
+ - To convert to a visualization run:
+ ```
+
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+ ```
+ </details>
 
 
 ## References
