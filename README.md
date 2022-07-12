@@ -27,7 +27,7 @@ This an easy curriculum on using Qiime 2 for microbiome data analysis.
 
 - In this tutorial we will analyze human microbiome samples from two indivuduals at four body sites and at five timepoints, the first of which immediately followed antibiotic usage.These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
 
-- QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [[1]]() 
+- QIIME 2 can also process other types of microbiome data, including amplicons of other markers such as 18S rRNA, internal transcribed spacers (ITS), and cytochrome oxidase I (COI), shotgun metagenomics, and untargeted metabolomics [[1]](https://currentprotocols.onlinelibrary.wiley.com/doi/full/10.1002/cpbi.100)
 
 
 </details>
@@ -308,7 +308,7 @@ The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/202
 - These were sequenced on an Illumina HiSeq using the Earth Microbiome Project hypervariable region 4 (V4) 16S rRNA sequencing protocol.
  
 
-- Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria. [[2]]()
+- Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria. [[2]](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2562909/)
 
 Explore the sample metadata[here](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
 
