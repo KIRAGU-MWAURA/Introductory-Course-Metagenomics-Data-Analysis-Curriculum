@@ -310,7 +310,7 @@ The data is obtained from [Moving pictures tutorial](https://docs.qiime2.org/202
 
 - Bacterial 16S ribosomal RNA (rRNA) genes contain nine “hypervariable regions” (V1 – V9) that demonstrate considerable sequence diversity among different bacteria. [[2]](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2562909/)
 
-Explore the sample metadata[here](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
+Explore the sample metadata [here](https://docs.google.com/spreadsheets/d/1I9TzFqkjQ9RvXMrP7StbWwMid5pjFN8exYC7nUVpKFs/edit#gid=0)
 
 
 </details>
