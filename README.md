@@ -677,7 +677,8 @@ qiime diversity alpha-group-significance   --i-alpha-diversity core-metrics-resu
  - To test  association between categorical metadata and Beta diversity using PERMANOVA we will use the `beta-group-significance` command. The following commands will test whether distances between samples within a group, such as samples from the same body site (e.g., gut), are more similar to each other then they are to samples from the other groups (e.g., tongue, left palm, and right palm). 
  - If  this command ` --p-pairwise parameter` is used,  it will perform pairwise tests that will allow you to determine which specific pairs of groups (e.g., tongue and gut) differ from one another, if any. 
  - This command can be slow to run, especially when passing `--p-pairwise`, since it is based on permutation tests. So, unlike the previous commands, we’ll run beta-group-significance on specific columns of metadata, rather than all metadata columns. 
- - Here we will apply this to our unweighted UniFrac distances, using two sample metadata columns body site and subject respectively.
+ - Here we will apply this to our unweighted UniFrac distances, using two sample metadata columns body site and subject respectively. 
+ - Make sure you are in the `tutorial` directory while running the commands and in the `core-metrics` directory while visualizing
  
  ```
  qiime diversity beta-group-significance \
