@@ -722,11 +722,38 @@ qiime emperor plot \
   --p-custom-axes days-since-experiment-start \
   --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
  ```
+ To view:
  
+ ```
+ qiime tools view unweighted-unifrac-emperor-days-since-experiment-start.qzv
+ ```
+ ```
+ qiime tools view bray-curtis-emperor-days-since-experiment-start.qzv
  
+ ```
  
+ ## ALPHA RAREFACTIONS
+```
+qiime diversity alpha-rarefaction \
+  --i-table table.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth 4000 \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization alpha-rarefaction.qzv
+```
+
+To view
+
+```
+qiime tools view alpha-rarefaction.qzv
+```
  
 </details>
+
+
+
+
+
 
  ## TAXONOMIC ANALYSIS
  <details>
